@@ -1,0 +1,1934 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-commerce Fulfillment Pro 2026</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #e2e8f0;
+            min-height: 100vh;
+            padding-bottom: 80px;
+        }
+
+        /* ========== LOGIN SCREEN ========== */
+        .login-screen {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 5%;
+        }
+
+        .login-card {
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 400px;
+            width: 100%;
+            border: 1px solid #334155;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        }
+
+        .login-logo {
+            text-align: center;
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+
+        .login-title {
+            text-align: center;
+            font-size: 20px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 8px;
+        }
+
+        .login-subtitle {
+            text-align: center;
+            font-size: 12px;
+            color: #94a3b8;
+            margin-bottom: 24px;
+        }
+
+        /* ========== MAIN APP ========== */
+        .app-container {
+            display: none;
+        }
+
+        .app-container.active {
+            display: block;
+        }
+
+        /* ========== HEADER ========== */
+        .header {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            padding: 12px 1%;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3);
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .header-subtitle {
+            font-size: 11px;
+            color: #e0e7ff;
+            margin-top: 2px;
+        }
+
+        .user-info {
+            text-align: right;
+        }
+
+        .user-name {
+            font-size: 12px;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .user-role {
+            font-size: 9px;
+            color: #e0e7ff;
+            margin-top: 2px;
+        }
+
+        .logout-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-top: 4px;
+        }
+
+        .sync-status {
+            font-size: 10px;
+            color: #e0e7ff;
+            margin-top: 4px;
+        }
+
+        /* ========== STATS GRID ========== */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1%;
+            padding: 1%;
+            margin-top: 8px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            border-radius: 12px;
+            padding: 12px;
+            border: 1px solid #334155;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .stat-card:active {
+            transform: scale(0.98);
+        }
+
+        .stat-label {
+            font-size: 10px;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+
+        .stat-value {
+            font-size: 22px;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .stat-change {
+            font-size: 10px;
+            color: #22c55e;
+            margin-top: 2px;
+        }
+
+        /* ========== FILTERS ========== */
+        .filter-bar {
+            padding: 1%;
+            display: flex;
+            gap: 6px;
+            overflow-x: auto;
+        }
+
+        .filter-btn {
+            background: #334155;
+            border: none;
+            color: #94a3b8;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 11px;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.2s;
+        }
+
+        .filter-btn.active {
+            background: #6366f1;
+            color: #ffffff;
+        }
+
+        /* ========== SEARCH BAR ========== */
+        .search-bar {
+            padding: 1%;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px;
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 12px;
+            color: #e2e8f0;
+            font-size: 13px;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #6366f1;
+        }
+
+        /* ========== SECTION ========== */
+        .section {
+            padding: 1%;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            padding: 0 1%;
+        }
+
+        .section-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: #f1f5f9;
+            text-transform: uppercase;
+        }
+
+        .action-btns {
+            display: flex;
+            gap: 6px;
+        }
+
+        .action-btn {
+            background: #334155;
+            border: none;
+            color: #94a3b8;
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 11px;
+            cursor: pointer;
+        }
+
+        /* ========== CARDS ========== */
+        .order-card, .inventory-card {
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            border-radius: 12px;
+            padding: 12px;
+            margin: 1%;
+            margin-bottom: 10px;
+            border-left: 4px solid #6366f1;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .priority-high {
+            border-left-color: #ef4444;
+        }
+
+        .priority-medium {
+            border-left-color: #f59e0b;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .card-id {
+            font-size: 13px;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        /* ========== BADGES ========== */
+        .badge {
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .status-pending { background: #fef3c7; color: #92400e; }
+        .status-processing { background: #dbeafe; color: #1e40af; }
+        .status-shipped { background: #d1fae5; color: #065f46; }
+        .status-delivered { background: #e0e7ff; color: #3730a3; }
+        .payment-paid { background: #d1fae5; color: #065f46; }
+        .payment-pending { background: #fef3c7; color: #92400e; }
+        .payment-refunded { background: #fee2e2; color: #991b1b; }
+        .stock-high { background: #d1fae5; color: #065f46; }
+        .stock-medium { background: #fef3c7; color: #92400e; }
+        .stock-low { background: #fee2e2; color: #991b1b; }
+
+        /* ========== DETAILS ========== */
+        .details {
+            display: grid;
+            gap: 6px;
+            margin-top: 8px;
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 11px;
+        }
+
+        .detail-label {
+            color: #94a3b8;
+        }
+
+        .detail-value {
+            color: #e2e8f0;
+            font-weight: 600;
+        }
+
+        /* ========== BUTTONS ========== */
+        .btn-group {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 6px;
+            margin-top: 10px;
+        }
+
+        .btn {
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            font-size: 11px;
+            font-weight: 600;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: all 0.2s;
+        }
+
+        .btn:active {
+            transform: scale(0.97);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            color: #ffffff;
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            color: #ffffff;
+        }
+
+        .btn-secondary {
+            background: #334155;
+            color: #e2e8f0;
+        }
+
+        .btn-danger {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            color: #ffffff;
+        }
+
+        .btn-full {
+            width: 100%;
+        }
+
+        /* ========== NAVIGATION ========== */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #1e293b;
+            border-top: 1px solid #334155;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            padding: 8px 0;
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            padding: 6px;
+            color: #64748b;
+            cursor: pointer;
+            border: none;
+            background: none;
+        }
+
+        .nav-item.active {
+            color: #6366f1;
+        }
+
+        .nav-icon {
+            width: 24px;
+            height: 24px;
+        }
+
+        .nav-label {
+            font-size: 10px;
+            font-weight: 600;
+        }
+
+        /* ========== MODAL ========== */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 5%;
+            overflow-y: auto;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: #1e293b;
+            border-radius: 16px;
+            padding: 20px;
+            max-width: 500px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            border: 1px solid #334155;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .modal-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            color: #94a3b8;
+            font-size: 24px;
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            padding: 0;
+        }
+
+        /* ========== FORM ========== */
+        .form-group {
+            margin-bottom: 14px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 11px;
+            color: #94a3b8;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+        }
+
+        .form-input, .form-select {
+            width: 100%;
+            padding: 10px;
+            background: #0f172a;
+            border: 1px solid #334155;
+            border-radius: 8px;
+            color: #e2e8f0;
+            font-size: 13px;
+        }
+
+        .form-input:focus, .form-select:focus {
+            outline: none;
+            border-color: #6366f1;
+        }
+
+        /* ========== NOTIFICATION ========== */
+        .notification {
+            position: fixed;
+            top: 80px;
+            left: 1%;
+            right: 1%;
+            padding: 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            transform: translateY(-200px);
+            transition: transform 0.3s;
+            z-index: 1001;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .notification.show {
+            transform: translateY(0);
+        }
+
+        .notification.success {
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            color: white;
+        }
+
+        .notification.error {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            color: white;
+        }
+
+        .notification.info {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            color: white;
+        }
+
+        /* ========== VIEWS ========== */
+        .view {
+            display: none;
+        }
+
+        .view.active {
+            display: block;
+        }
+
+        /* ========== PROGRESS BAR ========== */
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #0f172a;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 8px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            transition: width 0.3s;
+        }
+
+        /* ========== EMPTY STATE ========== */
+        .empty-state {
+            text-align: center;
+            padding: 40px 1%;
+            color: #64748b;
+        }
+
+        .empty-icon {
+            font-size: 48px;
+            margin-bottom: 12px;
+        }
+
+        .empty-text {
+            font-size: 13px;
+        }
+
+        /* ========== FAB BUTTONS ========== */
+        .fab-btn {
+            position: fixed;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            border: none;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            z-index: 99;
+        }
+
+        .camera-fab {
+            bottom: 90px;
+            right: 20px;
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+        }
+
+        .voice-fab {
+            bottom: 90px;
+            left: 20px;
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+        }
+
+        .voice-fab.listening {
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+
+        /* ========== OFFLINE BANNER ========== */
+        .offline-banner {
+            background: #f59e0b;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-size: 11px;
+            font-weight: 600;
+            display: none;
+        }
+
+        .offline-banner.show {
+            display: block;
+        }
+
+        /* ========== CAMERA PREVIEW ========== */
+        .camera-preview {
+            width: 100%;
+            height: 200px;
+            background: #0f172a;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 10px 0;
+            border: 2px dashed #334155;
+        }
+
+        .scan-result {
+            margin-top: 15px;
+            padding: 12px;
+            background: #0f172a;
+            border-radius: 8px;
+            display: none;
+        }
+
+        .scan-result.show {
+            display: block;
+        }
+
+        /* ========== CHECKBOX ========== */
+        .checkbox {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        /* ========== BULK ACTIONS ========== */
+        .bulk-actions {
+            background: #1e293b;
+            padding: 12px 1%;
+            border-radius: 12px;
+            margin: 1%;
+            display: none;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .bulk-actions.show {
+            display: flex;
+        }
+
+        /* ========== INFO BOX ========== */
+        .info-box {
+            margin-top: 16px;
+            padding: 12px;
+            background: #0f172a;
+            border-radius: 8px;
+            font-size: 10px;
+            color: #94a3b8;
+        }
+
+        /* ========== CARRIER LOGO ========== */
+        .carrier-logo {
+            padding: 6px 12px;
+            background: white;
+            border-radius: 6px;
+            font-size: 10px;
+            font-weight: 700;
+            color: #1e293b;
+        }
+    </style>
+</head>
+<body>
+    <!-- Offline Banner -->
+    <div class="offline-banner" id="offlineBanner">
+        📡 Offline Mode - Changes will sync when online
+    </div>
+
+    <!-- Login Screen -->
+    <div class="login-screen" id="loginScreen">
+        <div class="login-card">
+            <div class="login-logo">📦</div>
+            <div class="login-title">Fulfillment Pro 2026</div>
+            <div class="login-subtitle">Complete Order Management System</div>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label class="form-label">Username</label>
+                    <input type="text" class="form-input" id="loginUsername" required placeholder="Enter username">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Password</label>
+                    <input type="password" class="form-input" id="loginPassword" required placeholder="Enter password">
+                </div>
+                <button type="submit" class="btn btn-success btn-full">🔐 Login</button>
+            </form>
+            <div class="info-box">
+                <strong>Demo Credentials:</strong><br>
+                admin / admin123<br>
+                manager / manager123<br>
+                staff / staff123
+            </div>
+        </div>
+    </div>
+
+    <!-- Main App Container -->
+    <div class="app-container" id="appContainer">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-top">
+                <div>
+                    <h1>📦 Fulfillment Pro 2026</h1>
+                    <div class="header-subtitle">Complete Order Management</div>
+                    <div class="sync-status" id="syncStatus">● Synced</div>
+                </div>
+                <div class="user-info">
+                    <div class="user-name" id="userName">User</div>
+                    <div class="user-role" id="userRole">ADMIN</div>
+                    <button class="logout-btn" id="logoutBtn">Logout</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Orders View -->
+        <div class="view active" id="ordersView">
+            <!-- Stats -->
+            <div class="stats-grid">
+                <div class="stat-card" onclick="app.quickFilter('pending')">
+                    <div class="stat-label">Pending</div>
+                    <div class="stat-value" id="pendingCount">0</div>
+                    <div class="stat-change">↑ 12%</div>
+                </div>
+                <div class="stat-card" onclick="app.quickFilter('processing')">
+                    <div class="stat-label">Processing</div>
+                    <div class="stat-value" id="processingCount">0</div>
+                    <div class="stat-change">↑ 8%</div>
+                </div>
+                <div class="stat-card" onclick="app.quickFilter('shipped')">
+                    <div class="stat-label">Shipped</div>
+                    <div class="stat-value" id="shippedCount">0</div>
+                    <div class="stat-change">↑ 24%</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Revenue</div>
+                    <div class="stat-value">$<span id="revenueCount">0</span></div>
+                    <div class="stat-change">↑ 15%</div>
+                </div>
+            </div>
+
+            <!-- Date Filters -->
+            <div class="filter-bar">
+                <button class="filter-btn active" onclick="app.filterByDate('all')">All Time</button>
+                <button class="filter-btn" onclick="app.filterByDate('today')">Today</button>
+                <button class="filter-btn" onclick="app.filterByDate('week')">This Week</button>
+                <button class="filter-btn" onclick="app.filterByDate('month')">This Month</button>
+            </div>
+
+            <!-- Search -->
+            <div class="search-bar">
+                <input type="text" class="search-input" id="searchInput" placeholder="🔍 Search orders..." oninput="app.renderOrders()">
+            </div>
+
+            <!-- Bulk Actions -->
+            <div class="bulk-actions" id="bulkActions">
+                <span style="font-size: 11px; color: #94a3b8;"><span id="selectedCount">0</span> selected</span>
+                <button class="btn btn-primary" style="font-size: 10px; padding: 6px 10px;" onclick="app.bulkProcess()">Process All</button>
+                <button class="btn btn-secondary" style="font-size: 10px; padding: 6px 10px;" onclick="app.clearSelection()">Clear</button>
+            </div>
+
+            <!-- Orders List -->
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-title">Orders</div>
+                    <div class="action-btns">
+                        <button class="action-btn" onclick="app.exportData()">📥 Export</button>
+                        <button class="action-btn" onclick="app.toggleStatusFilter()">Filter</button>
+                    </div>
+                </div>
+                <div id="ordersList"></div>
+            </div>
+        </div>
+
+        <!-- Inventory View -->
+        <div class="view" id="inventoryView">
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-title">Inventory</div>
+                    <button class="action-btn" onclick="app.openModal('inventoryModal')">+ Add</button>
+                </div>
+                <div id="inventoryList"></div>
+            </div>
+        </div>
+
+        <!-- Shipping View -->
+        <div class="view" id="shippingView">
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-title">Shipping</div>
+                </div>
+                <div id="shippingList"></div>
+            </div>
+        </div>
+
+        <!-- Payments View -->
+        <div class="view" id="paymentsView">
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-title">Payments</div>
+                </div>
+                <div id="paymentsList"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <div class="bottom-nav">
+        <button class="nav-item active" onclick="app.switchView('orders')">
+            <svg class="nav-icon" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M3 3h18v18H3V3zm16 16V5H5v14h14z"/>
+            </svg>
+            <div class="nav-label">Orders</div>
+        </button>
+        <button class="nav-item" onclick="app.switchView('inventory')">
+            <svg class="nav-icon" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M4 4h16v16H4V4zm14 14V6H6v12h12z"/>
+            </svg>
+            <div class="nav-label">Inventory</div>
+        </button>
+        <button class="nav-item" onclick="app.switchView('shipping')">
+            <svg class="nav-icon" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M18 6l-2.5 7.5L18 21l-6-2.5L6 21l2.5-7.5L6 6l6 2.5L18 6z"/>
+            </svg>
+            <div class="nav-label">Shipping</div>
+        </button>
+        <button class="nav-item" onclick="app.switchView('payments')">
+            <svg class="nav-icon" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M20 4H4c-1.11 0-2 .89-2 2v12c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/>
+            </svg>
+            <div class="nav-label">Payments</div>
+        </button>
+        <button class="nav-item" onclick="app.openModal('orderModal')">
+            <svg class="nav-icon" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+            </svg>
+            <div class="nav-label">New</div>
+        </button>
+    </div>
+
+    <!-- FAB Buttons -->
+    <button class="fab-btn camera-fab" onclick="app.openModal('cameraModal')" title="Scan Barcode">📷</button>
+    <button class="fab-btn voice-fab" id="voiceBtn" onclick="app.toggleVoice()" title="Voice Command">🎤</button>
+
+    <!-- Order Modal -->
+    <div class="modal" id="orderModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">New Order</div>
+                <button class="close-btn" onclick="app.closeModal('orderModal')">&times;</button>
+            </div>
+            <form id="orderForm" onsubmit="app.createOrder(event)">
+                <div class="form-group">
+                    <label class="form-label">Customer Name</label>
+                    <input type="text" class="form-input" id="customerName" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-input" id="customerEmail" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Phone</label>
+                    <input type="tel" class="form-input" id="customerPhone" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Product</label>
+                    <select class="form-select" id="productSelect" required onchange="app.updatePrice()">
+                        <option value="">Select product...</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Quantity</label>
+                    <input type="number" class="form-input" id="quantity" min="1" value="1" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Price ($)</label>
+                    <input type="number" class="form-input" id="price" step="0.01" readonly>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Payment Method</label>
+                    <select class="form-select" id="paymentMethod">
+                        <option value="credit_card">Credit Card</option>
+                        <option value="paypal">PayPal</option>
+                        <option value="stripe">Stripe</option>
+                        <option value="cash">Cash</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Shipping Address</label>
+                    <input type="text" class="form-input" id="shippingAddress" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Priority</label>
+                    <select class="form-select" id="priority">
+                        <option value="low">Low</option>
+                        <option value="medium">Medium</option>
+                        <option value="high">High</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-success btn-full">Create Order</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Inventory Modal -->
+    <div class="modal" id="inventoryModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">Add Product</div>
+                <button class="close-btn" onclick="app.closeModal('inventoryModal')">&times;</button>
+            </div>
+            <form id="inventoryForm" onsubmit="app.addInventory(event)">
+                <div class="form-group">
+                    <label class="form-label">Product Name</label>
+                    <input type="text" class="form-input" id="invName" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">SKU</label>
+                    <input type="text" class="form-input" id="invSKU" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Stock</label>
+                    <input type="number" class="form-input" id="invStock" min="0" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Price ($)</label>
+                    <input type="number" class="form-input" id="invPrice" step="0.01" min="0" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Reorder Level</label>
+                    <input type="number" class="form-input" id="invReorder" min="0" value="10">
+                </div>
+                <button type="submit" class="btn btn-success btn-full">Add Product</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Shipping Modal -->
+    <div class="modal" id="shippingModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">Ship Order</div>
+                <button class="close-btn" onclick="app.closeModal('shippingModal')">&times;</button>
+            </div>
+            <div id="shippingContent"></div>
+        </div>
+    </div>
+
+    <!-- Camera Modal -->
+    <div class="modal" id="cameraModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">Scan Barcode</div>
+                <button class="close-btn" onclick="app.closeModal('cameraModal')">&times;</button>
+            </div>
+            <div class="camera-preview">
+                <div style="text-align: center; color: #64748b;">
+                    <div style="font-size: 48px;">📷</div>
+                    <div style="font-size: 12px; margin-top: 10px;">Camera Preview</div>
+                    <button class="btn btn-primary" style="margin-top: 15px;" onclick="app.simulateScan()">Simulate Scan</button>
+                </div>
+            </div>
+            <div class="scan-result" id="scanResult">
+                <div style="font-size: 11px; color: #94a3b8; margin-bottom: 6px;">SCANNED:</div>
+                <div id="scannedCode" style="font-size: 14px; font-weight: 700; color: #22c55e;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div class="notification" id="notification"></div>
+
+    <script>
+        // ==================== MAIN APPLICATION ====================
+        const app = {
+            // State
+            currentUser: null,
+            orders: [],
+            inventory: [],
+            payments: [],
+            orderCounter: 1,
+            selectedOrders: new Set(),
+            currentDateFilter: 'all',
+            currentStatusFilter: 'all',
+            isVoiceListening: false,
+
+            // Valid Users
+            validUsers: {
+                'admin': { password: 'admin123', role: 'Admin', name: 'Admin User' },
+                'manager': { password: 'manager123', role: 'Manager', name: 'Manager' },
+                'staff': { password: 'staff123', role: 'Staff', name: 'Warehouse Staff' }
+            },
+
+            // Carriers
+            carriers: ['UPS', 'FedEx', 'USPS', 'DHL'],
+
+            // ==================== INITIALIZATION ====================
+            init() {
+                this.setupEventListeners();
+                this.checkSession();
+                this.setupOfflineDetection();
+            },
+
+            setupEventListeners() {
+                // Login form
+                document.getElementById('loginForm').addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    this.login();
+                });
+
+                // Logout button
+                document.getElementById('logoutBtn').addEventListener('click', () => this.logout());
+            },
+
+            checkSession() {
+                const saved = sessionStorage.getItem('currentUser');
+                if (saved) {
+                    this.currentUser = JSON.parse(saved);
+                    this.showApp();
+                }
+            },
+
+            setupOfflineDetection() {
+                window.addEventListener('online', () => {
+                    document.getElementById('offlineBanner').classList.remove('show');
+                    this.notify('🌐 Back online', 'success');
+                });
+
+                window.addEventListener('offline', () => {
+                    document.getElementById('offlineBanner').classList.add('show');
+                    this.notify('📡 Offline mode', 'info');
+                });
+            },
+
+            // ==================== AUTHENTICATION ====================
+            login() {
+                const username = document.getElementById('loginUsername').value.trim();
+                const password = document.getElementById('loginPassword').value;
+
+                if (this.validUsers[username] && this.validUsers[username].password === password) {
+                    this.currentUser = this.validUsers[username];
+                    sessionStorage.setItem('currentUser', JSON.stringify(this.currentUser));
+                    this.showApp();
+                } else {
+                    this.notify('❌ Invalid credentials', 'error');
+                }
+            },
+
+            logout() {
+                if (confirm('Are you sure you want to logout?')) {
+                    sessionStorage.clear();
+                    location.reload();
+                }
+            },
+
+            showApp() {
+                document.getElementById('loginScreen').style.display = 'none';
+                document.getElementById('appContainer').classList.add('active');
+                document.getElementById('userName').textContent = this.currentUser.name;
+                document.getElementById('userRole').textContent = this.currentUser.role.toUpperCase();
+                
+                this.loadData();
+                this.notify(`✅ Welcome, ${this.currentUser.name}!`, 'success');
+            },
+
+            // ==================== DATA MANAGEMENT ====================
+            loadData() {
+                try {
+                    const savedOrders = localStorage.getItem('orders');
+                    const savedInventory = localStorage.getItem('inventory');
+                    const savedPayments = localStorage.getItem('payments');
+                    const savedCounter = localStorage.getItem('orderCounter');
+
+                    if (savedOrders) {
+                        this.orders = JSON.parse(savedOrders).map(o => ({
+                            ...o,
+                            date: new Date(o.date),
+                            shippedDate: o.shippedDate ? new Date(o.shippedDate) : null
+                        }));
+                    } else {
+                        this.initSampleOrders();
+                    }
+
+                    if (savedInventory) {
+                        this.inventory = JSON.parse(savedInventory);
+                    } else {
+                        this.initInventory();
+                    }
+
+                    if (savedPayments) {
+                        this.payments = JSON.parse(savedPayments);
+                    } else {
+                        this.syncPayments();
+                    }
+
+                    if (savedCounter) {
+                        this.orderCounter = parseInt(savedCounter);
+                    }
+
+                    this.updateProductSelect();
+                    this.updateStats();
+                    this.renderOrders();
+                    this.renderInventory();
+                } catch (error) {
+                    console.error('Error loading data:', error);
+                    this.initSampleOrders();
+                    this.initInventory();
+                }
+            },
+
+            saveData() {
+                try {
+                    localStorage.setItem('orders', JSON.stringify(this.orders));
+                    localStorage.setItem('inventory', JSON.stringify(this.inventory));
+                    localStorage.setItem('payments', JSON.stringify(this.payments));
+                    localStorage.setItem('orderCounter', this.orderCounter);
+                    document.getElementById('syncStatus').textContent = '● Synced';
+                } catch (error) {
+                    console.error('Save error:', error);
+                    this.notify('⚠️ Error saving data', 'error');
+                }
+            },
+
+            initSampleOrders() {
+                this.orders = [
+                    {
+                        id: 'ORD-2026-001',
+                        customer: 'Sarah Johnson',
+                        email: 'sarah@email.com',
+                        phone: '+1-555-0101',
+                        product: 'Wireless Headphones',
+                        quantity: 2,
+                        price: 149.99,
+                        total: 299.98,
+                        status: 'pending',
+                        paymentMethod: 'credit_card',
+                        paymentStatus: 'paid',
+                        address: '123 Main St, New York, NY 10001',
+                        date: new Date(),
+                        priority: 'high',
+                        trackingNumber: null,
+                        carrier: null,
+                        shippedDate: null
+                    },
+                    {
+                        id: 'ORD-2026-002',
+                        customer: 'Michael Chen',
+                        email: 'mchen@email.com',
+                        phone: '+1-555-0102',
+                        product: 'Smart Watch',
+                        quantity: 1,
+                        price: 399.99,
+                        total: 399.99,
+                        status: 'processing',
+                        paymentMethod: 'paypal',
+                        paymentStatus: 'paid',
+                        address: '456 Oak Ave, Los Angeles, CA 90012',
+                        date: new Date(Date.now() - 86400000),
+                        priority: 'medium',
+                        trackingNumber: null,
+                        carrier: null,
+                        shippedDate: null
+                    }
+                ];
+                this.orderCounter = 3;
+                this.saveData();
+            },
+
+            initInventory() {
+                this.inventory = [
+                    { id: 'INV001', name: 'Wireless Headphones', sku: 'WH-001', stock: 45, price: 149.99, reorderLevel: 10, sold: 15 },
+                    { id: 'INV002', name: 'Smart Watch', sku: 'SW-001', stock: 8, price: 399.99, reorderLevel: 10, sold: 22 },
+                    { id: 'INV003', name: 'Laptop Stand', sku: 'LS-001', stock: 32, price: 79.99, reorderLevel: 10, sold: 8 },
+                    { id: 'INV004', name: 'Phone Case', sku: 'PC-001', stock: 120, price: 24.99, reorderLevel: 20, sold: 30 },
+                    { id: 'INV005', name: 'USB-C Cable', sku: 'UC-001', stock: 200, price: 12.99, reorderLevel: 50, sold: 50 },
+                    { id: 'INV006', name: 'Portable Charger', sku: 'PCH-001', stock: 15, price: 49.99, reorderLevel: 10, sold: 10 }
+                ];
+                this.saveData();
+            },
+
+            syncPayments() {
+                this.payments = this.orders.map(order => ({
+                    id: 'PAY-' + order.id.split('-')[2],
+                    orderId: order.id,
+                    amount: order.total,
+                    method: order.paymentMethod || 'credit_card',
+                    status: order.paymentStatus || 'paid',
+                    date: order.date,
+                    customer: order.customer
+                }));
+                this.saveData();
+            },
+
+            // ==================== STATISTICS ====================
+            updateStats() {
+                const pending = this.orders.filter(o => o.status === 'pending').length;
+                const processing = this.orders.filter(o => o.status === 'processing').length;
+                const shipped = this.orders.filter(o => o.status === 'shipped').length;
+                const revenue = this.orders.reduce((sum, o) => sum + o.total, 0);
+
+                document.getElementById('pendingCount').textContent = pending;
+                document.getElementById('processingCount').textContent = processing;
+                document.getElementById('shippedCount').textContent = shipped;
+                document.getElementById('revenueCount').textContent = Math.round(revenue).toLocaleString();
+            },
+
+            // ==================== ORDERS ====================
+            renderOrders() {
+                const container = document.getElementById('ordersList');
+                const filtered = this.getFilteredOrders();
+
+                if (filtered.length === 0) {
+                    container.innerHTML = `
+                        <div class="empty-state">
+                            <div class="empty-icon">📭</div>
+                            <div class="empty-text">No orders found</div>
+                        </div>
+                    `;
+                    return;
+                }
+
+                container.innerHTML = filtered.map(order => `
+                    <div class="order-card priority-${order.priority}">
+                        <div class="card-header">
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <input type="checkbox" class="checkbox" 
+                                    ${this.selectedOrders.has(order.id) ? 'checked' : ''} 
+                                    onchange="app.toggleSelection('${order.id}')">
+                                <div class="card-id">${order.id}</div>
+                            </div>
+                            <div class="badge status-${order.status}">${order.status}</div>
+                        </div>
+                        <div class="details">
+                            <div class="detail-row">
+                                <span class="detail-label">👤 Customer</span>
+                                <span class="detail-value">${order.customer}</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">📦 Product</span>
+                                <span class="detail-value">${order.product}</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">🔢 Qty</span>
+                                <span class="detail-value">${order.quantity}</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">💰 Total</span>
+                                <span class="detail-value">$${order.total.toFixed(2)}</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">💳 Payment</span>
+                                <span class="badge payment-${order.paymentStatus}">${order.paymentStatus}</span>
+                            </div>
+                            ${order.trackingNumber ? `
+                            <div class="detail-row">
+                                <span class="detail-label">🚚 Tracking</span>
+                                <span class="detail-value">${order.trackingNumber}</span>
+                            </div>
+                            ` : ''}
+                        </div>
+                        <div class="btn-group">
+                            ${this.getOrderActions(order)}
+                        </div>
+                    </div>
+                `).join('');
+            },
+
+            getOrderActions(order) {
+                switch(order.status) {
+                    case 'pending':
+                        return `
+                            <button class="btn btn-primary" onclick="app.processOrder('${order.id}')">Process</button>
+                            <button class="btn btn-secondary" onclick="app.viewOrder('${order.id}')">Details</button>
+                        `;
+                    case 'processing':
+                        return `
+                            <button class="btn btn-success" onclick="app.openShipping('${order.id}')">Ship</button>
+                            <button class="btn btn-secondary" onclick="app.viewOrder('${order.id}')">Details</button>
+                        `;
+                    case 'shipped':
+                        return `
+                            <button class="btn btn-primary" onclick="app.markDelivered('${order.id}')">Mark Delivered</button>
+                            <button class="btn btn-secondary" onclick="app.viewOrder('${order.id}')">Details</button>
+                        `;
+                    default:
+                        return `
+                            <button class="btn btn-secondary" disabled>Completed</button>
+                            <button class="btn btn-secondary" onclick="app.viewOrder('${order.id}')">Details</button>
+                        `;
+                }
+            },
+
+            getFilteredOrders() {
+                let filtered = [...this.orders];
+
+                // Date filter
+                const now = new Date();
+                if (this.currentDateFilter === 'today') {
+                    filtered = filtered.filter(o => 
+                        o.date.toDateString() === now.toDateString()
+                    );
+                } else if (this.currentDateFilter === 'week') {
+                    const weekAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
+                    filtered = filtered.filter(o => o.date >= weekAgo);
+                } else if (this.currentDateFilter === 'month') {
+                    filtered = filtered.filter(o => 
+                        o.date.getMonth() === now.getMonth() && 
+                        o.date.getFullYear() === now.getFullYear()
+                    );
+                }
+
+                // Status filter
+                if (this.currentStatusFilter !== 'all') {
+                    filtered = filtered.filter(o => o.status === this.currentStatusFilter);
+                }
+
+                // Search filter
+                const search = document.getElementById('searchInput').value.toLowerCase();
+                if (search) {
+                    filtered = filtered.filter(o => 
+                        o.id.toLowerCase().includes(search) ||
+                        o.customer.toLowerCase().includes(search) ||
+                        o.product.toLowerCase().includes(search)
+                    );
+                }
+
+                return filtered;
+            },
+
+            createOrder(e) {
+                e.preventDefault();
+
+                const productId = document.getElementById('productSelect').value;
+                const product = this.inventory.find(i => i.id === productId);
+                const qty = parseInt(document.getElementById('quantity').value);
+
+                if (!product) {
+                    this.notify('❌ Please select a product', 'error');
+                    return;
+                }
+
+                if (product.stock < qty) {
+                    this.notify('❌ Insufficient stock', 'error');
+                    return;
+                }
+
+                const newOrder = {
+                    id: `ORD-2026-${String(this.orderCounter++).padStart(3, '0')}`,
+                    customer: document.getElementById('customerName').value,
+                    email: document.getElementById('customerEmail').value,
+                    phone: document.getElementById('customerPhone').value,
+                    product: product.name,
+                    quantity: qty,
+                    price: product.price,
+                    total: qty * product.price,
+                    status: 'pending',
+                    paymentMethod: document.getElementById('paymentMethod').value,
+                    paymentStatus: 'paid',
+                    address: document.getElementById('shippingAddress').value,
+                    date: new Date(),
+                    priority: document.getElementById('priority').value,
+                    trackingNumber: null,
+                    carrier: null,
+                    shippedDate: null
+                };
+
+                // Update inventory
+                product.stock -= qty;
+                product.sold += qty;
+
+                // Add order
+                this.orders.unshift(newOrder);
+
+                // Add payment
+                this.payments.push({
+                    id: 'PAY-' + newOrder.id.split('-')[2],
+                    orderId: newOrder.id,
+                    amount: newOrder.total,
+                    method: newOrder.paymentMethod,
+                    status: 'paid',
+                    date: newOrder.date,
+                    customer: newOrder.customer
+                });
+
+                this.saveData();
+                this.updateStats();
+                this.renderOrders();
+                this.renderInventory();
+                this.closeModal('orderModal');
+                document.getElementById('orderForm').reset();
+                this.notify(`✅ Order ${newOrder.id} created!`, 'success');
+            },
+
+            processOrder(orderId) {
+                const order = this.orders.find(o => o.id === orderId);
+                if (order) {
+                    order.status = 'processing';
+                    this.saveData();
+                    this.updateStats();
+                    this.renderOrders();
+                    this.notify(`✅ Order ${orderId} is processing`, 'success');
+                }
+            },
+
+            markDelivered(orderId) {
+                const order = this.orders.find(o => o.id === orderId);
+                if (order) {
+                    order.status = 'delivered';
+                    this.saveData();
+                    this.updateStats();
+                    this.renderOrders();
+                    this.notify(`✅ Order ${orderId} delivered`, 'success');
+                }
+            },
+
+            viewOrder(orderId) {
+                const order = this.orders.find(o => o.id === orderId);
+                if (order) {
+                    alert(
+                        `Order Details:\n\n` +
+                        `ID: ${order.id}\n` +
+                        `Customer: ${order.customer}\n` +
+                        `Email: ${order.email}\n` +
+                        `Product: ${order.product}\n` +
+                        `Quantity: ${order.quantity}\n` +
+                        `Total: $${order.total.toFixed(2)}\n` +
+                        `Status: ${order.status}\n` +
+                        `Payment: ${order.paymentStatus}\n` +
+                        `${order.trackingNumber ? 'Tracking: ' + order.trackingNumber : ''}`
+                    );
+                }
+            },
+
+            // ==================== INVENTORY ====================
+            renderInventory() {
+                const container = document.getElementById('inventoryList');
+                
+                if (this.inventory.length === 0) {
+                    container.innerHTML = `
+                        <div class="empty-state">
+                            <div class="empty-icon">📦</div>
+                            <div class="empty-text">No inventory items</div>
+                        </div>
+                    `;
+                    return;
+                }
+
+                container.innerHTML = this.inventory.map(item => {
+                    const total = item.stock + item.sold;
+                    const stockPercent = total > 0 ? (item.stock / total) * 100 : 0;
+                    const stockStatus = item.stock <= item.reorderLevel ? 'low' : 
+                                       item.stock <= item.reorderLevel * 2 ? 'medium' : 'high';
+
+                    return `
+                        <div class="inventory-card">
+                            <div class="card-header">
+                                <div>
+                                    <div class="card-id">${item.name}</div>
+                                    <div style="font-size: 10px; color: #94a3b8; margin-top: 4px;">SKU: ${item.sku}</div>
+                                </div>
+                                <div class="badge stock-${stockStatus}">${item.stock} units</div>
+                            </div>
+                            <div class="details">
+                                <div class="detail-row">
+                                    <span class="detail-label">💰 Price</span>
+                                    <span class="detail-value">$${item.price.toFixed(2)}</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">📦 Sold</span>
+                                    <span class="detail-value">${item.sold} units</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">⚠️ Reorder</span>
+                                    <span class="detail-value">${item.reorderLevel} units</span>
+                                </div>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: ${stockPercent}%; background: ${
+                                    stockStatus === 'low' ? '#ef4444' : 
+                                    stockStatus === 'medium' ? '#f59e0b' : '#22c55e'
+                                }"></div>
+                            </div>
+                            ${item.stock <= item.reorderLevel ? `
+                                <div style="margin-top: 10px; padding: 8px; background: #fee2e2; color: #991b1b; border-radius: 8px; font-size: 10px; text-align: center; font-weight: 600;">
+                                    ⚠️ LOW STOCK - Reorder Required
+                                </div>
+                            ` : ''}
+                            <div class="btn-group" style="margin-top: 10px;">
+                                <button class="btn btn-primary" onclick="app.adjustStock('${item.id}', 10)">+ 10</button>
+                                <button class="btn btn-secondary" onclick="app.adjustStock('${item.id}', -10)">- 10</button>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            },
+
+            addInventory(e) {
+                e.preventDefault();
+
+                const newItem = {
+                    id: 'INV' + String(this.inventory.length + 1).padStart(3, '0'),
+                    name: document.getElementById('invName').value,
+                    sku: document.getElementById('invSKU').value,
+                    stock: parseInt(document.getElementById('invStock').value),
+                    price: parseFloat(document.getElementById('invPrice').value),
+                    reorderLevel: parseInt(document.getElementById('invReorder').value),
+                    sold: 0
+                };
+
+                this.inventory.push(newItem);
+                this.saveData();
+                this.updateProductSelect();
+                this.renderInventory();
+                this.closeModal('inventoryModal');
+                document.getElementById('inventoryForm').reset();
+                this.notify('✅ Product added to inventory', 'success');
+            },
+
+            adjustStock(itemId, amount) {
+                const item = this.inventory.find(i => i.id === itemId);
+                if (item) {
+                    item.stock = Math.max(0, item.stock + amount);
+                    this.saveData();
+                    this.renderInventory();
+                    this.notify(`📦 Stock adjusted for ${item.name}`, 'info');
+                }
+            },
+
+            updateProductSelect() {
+                const select = document.getElementById('productSelect');
+                select.innerHTML = '<option value="">Select product...</option>' + 
+                    this.inventory.map(item => 
+                        `<option value="${item.id}">${item.name} - $${item.price.toFixed(2)} (${item.stock} in stock)</option>`
+                    ).join('');
+            },
+
+            updatePrice() {
+                const productId = document.getElementById('productSelect').value;
+                const product = this.inventory.find(i => i.id === productId);
+                if (product) {
+                    document.getElementById('price').value = product.price.toFixed(2);
+                }
+            },
+
+            // ==================== SHIPPING ====================
+            openShipping(orderId) {
+                const order = this.orders.find(o => o.id === orderId);
+                if (!order) return;
+
+                const content = document.getElementById('shippingContent');
+                content.innerHTML = `
+                    <div class="form-group">
+                        <label class="form-label">Order ID</label>
+                        <input type="text" class="form-input" value="${order.id}" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Carrier</label>
+                        <select class="form-select" id="carrierSelect">
+                            ${this.carriers.map(c => `<option value="${c}">${c}</option>`).join('')}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Package Weight (lbs)</label>
+                        <input type="number" class="form-input" id="packageWeight" value="2" step="0.1" min="0.1">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Service Level</label>
+                        <select class="form-select" id="shippingService" onchange="app.updateShippingCost()">
+                            <option value="standard">Standard (5-7 days) - $8.99</option>
+                            <option value="express">Express (2-3 days) - $18.99</option>
+                            <option value="overnight">Overnight - $34.99</option>
+                        </select>
+                    </div>
+                    <div class="info-box">
+                        <div class="detail-row">
+                            <span class="detail-label">Shipping Cost</span>
+                            <span class="detail-value" id="shippingCost">$8.99</span>
+                        </div>
+                        <div class="detail-row" style="margin-top: 6px;">
+                            <span class="detail-label">Delivery</span>
+                            <span class="detail-value" id="deliveryEst">5-7 business days</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-success btn-full" onclick="app.confirmShipping('${order.id}')">
+                        📦 Ship Order
+                    </button>
+                `;
+
+                this.openModal('shippingModal');
+            },
+
+            updateShippingCost() {
+                const service = document.getElementById('shippingService').value;
+                const costs = { standard: '$8.99', express: '$18.99', overnight: '$34.99' };
+                const delivery = { standard: '5-7 business days', express: '2-3 business days', overnight: '1 business day' };
+                
+                document.getElementById('shippingCost').textContent = costs[service];
+                document.getElementById('deliveryEst').textContent = delivery[service];
+            },
+
+            confirmShipping(orderId) {
+                const order = this.orders.find(o => o.id === orderId);
+                if (!order) return;
+
+                const carrier = document.getElementById('carrierSelect').value;
+                const service = document.getElementById('shippingService').value;
+
+                order.status = 'shipped';
+                order.carrier = carrier;
+                order.service = service;
+                order.trackingNumber = carrier.substring(0, 3).toUpperCase() + 
+                    Math.random().toString(36).substring(2, 12).toUpperCase();
+                order.shippedDate = new Date();
+
+                this.saveData();
+                this.updateStats();
+                this.renderOrders();
+                this.closeModal('shippingModal');
+                this.notify(`📦 Shipped via ${carrier}! Tracking: ${order.trackingNumber}`, 'success');
+            },
+
+            renderShipping() {
+                const container = document.getElementById('shippingList');
+                const shipped = this.orders.filter(o => o.status === 'shipped' || o.status === 'delivered');
+
+                if (shipped.length === 0) {
+                    container.innerHTML = `
+                        <div class="empty-state">
+                            <div class="empty-icon">🚚</div>
+                            <div class="empty-text">No shipped orders</div>
+                        </div>
+                    `;
+                    return;
+                }
+
+                container.innerHTML = shipped.map(order => `
+                    <div class="order-card">
+                        <div class="card-header">
+                            <div class="card-id">${order.id}</div>
+                            <div class="carrier-logo">${order.carrier || 'N/A'}</div>
+                        </div>
+                        <div class="details">
+                            <div class="detail-row">
+                                <span class="detail-label">📦 Tracking</span>
+                                <span class="detail-value">${order.trackingNumber}</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">👤 Customer</span>
+                                <span class="detail-value">${order.customer}</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">📍 Destination</span>
+                                <span class="detail-value">${order.address.split(',')[1] || order.address}</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Status</span>
+                                <span class="badge status-${order.status}">${order.status}</span>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            },
+
+            // ==================== PAYMENTS ====================
+            renderPayments() {
+                const container = document.getElementById('paymentsList');
+                
+                if (this.payments.length === 0) {
+                    container.innerHTML = `
+                        <div class="empty-state">
+                            <div class="empty-icon">💳</div>
+                            <div class="empty-text">No payment records</div>
+                        </div>
+                    `;
+                    return;
+                }
+
+                const totalRevenue = this.payments.filter(p => p.status === 'paid').reduce((sum, p) => sum + p.amount, 0);
+                const pendingAmount = this.payments.filter(p => p.status === 'pending').reduce((sum, p) => sum + p.amount, 0);
+
+                container.innerHTML = `
+                    <div class="stats-grid" style="margin-bottom: 15px;">
+                        <div class="stat-card">
+                            <div class="stat-label">Total Revenue</div>
+                            <div class="stat-value">$${totalRevenue.toFixed(2)}</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">Pending</div>
+                            <div class="stat-value">$${pendingAmount.toFixed(2)}</div>
+                        </div>
+                    </div>
+                    ${this.payments.map(payment => `
+                        <div class="order-card">
+                            <div class="card-header">
+                                <div class="card-id">${payment.id}</div>
+                                <div class="badge payment-${payment.status}">${payment.status}</div>
+                            </div>
+                            <div class="details">
+                                <div class="detail-row">
+                                    <span class="detail-label">📋 Order</span>
+                                    <span class="detail-value">${payment.orderId}</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">👤 Customer</span>
+                                    <span class="detail-value">${payment.customer}</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">💳 Method</span>
+                                    <span class="detail-value">${payment.method.toUpperCase()}</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">💰 Amount</span>
+                                    <span class="detail-value">$${payment.amount.toFixed(2)}</span>
+                                </div>
+                            </div>
+                            ${payment.status === 'paid' ? `
+                                <button class="btn btn-danger btn-full" style="margin-top: 10px;" onclick="app.refundPayment('${payment.id}')">
+                                    💸 Refund
+                                </button>
+                            ` : ''}
+                        </div>
+                    `).join('')}
+                `;
+            },
+
+            refundPayment(paymentId) {
+                if (!confirm('Are you sure you want to refund this payment?')) return;
+
+                const payment = this.payments.find(p => p.id === paymentId);
+                if (payment) {
+                    payment.status = 'refunded';
+                    const order = this.orders.find(o => o.id === payment.orderId);
+                    if (order) {
+                        order.paymentStatus = 'refunded';
+                    }
+                    this.saveData();
+                    this.renderPayments();
+                    this.renderOrders();
+                    this.notify(`💸 Refund processed for ${payment.id}`, 'success');
+                }
+            },
+
+            // ==================== FILTERS ====================
+            filterByDate(period) {
+                this.currentDateFilter = period;
+                document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+                event.target.classList.add('active');
+                this.renderOrders();
+            },
+
+            quickFilter(status) {
+                this.currentStatusFilter = status;
+                this.renderOrders();
+            },
+
+            toggleStatusFilter() {
+                const statuses = ['all', 'pending', 'processing', 'shipped', 'delivered'];
+                const currentIndex = statuses.indexOf(this.currentStatusFilter);
+                this.currentStatusFilter = statuses[(currentIndex + 1) % statuses.length];
+                this.renderOrders();
+                this.notify(`Filter: ${this.currentStatusFilter}`, 'info');
+            },
+
+            // ==================== BULK ACTIONS ====================
+            toggleSelection(orderId) {
+                if (this.selectedOrders.has(orderId)) {
+                    this.selectedOrders.delete(orderId);
+                } else {
+                    this.selectedOrders.add(orderId);
+                }
+                
+                document.getElementById('selectedCount').textContent = this.selectedOrders.size;
+                const bulkActions = document.getElementById('bulkActions');
+                if (this.selectedOrders.size > 0) {
+                    bulkActions.classList.add('show');
+                } else {
+                    bulkActions.classList.remove('show');
+                }
+            },
+
+            bulkProcess() {
+                let count = 0;
+                this.selectedOrders.forEach(orderId => {
+                    const order = this.orders.find(o => o.id === orderId);
+                    if (order && order.status === 'pending') {
+                        order.status = 'processing';
+                        count++;
+                    }
+                });
+                
+                this.clearSelection();
+                this.saveData();
+                this.updateStats();
+                this.renderOrders();
+                this.notify(`✅ Processed ${count} orders`, 'success');
+            },
+
+            clearSelection() {
+                this.selectedOrders.clear();
+                document.getElementById('selectedCount').textContent = 0;
+                document.getElementById('bulkActions').classList.remove('show');
+                this.renderOrders();
+            },
+
+            // ==================== EXPORT ====================
+            exportData() {
+                const csv = 'Order ID,Customer,Email,Product,Qty,Price,Total,Status,Payment,Date\n' + 
+                    this.orders.map(o => 
+                        `${o.id},${o.customer},${o.email},${o.product},${o.quantity},${o.price},${o.total},${o.status},${o.paymentStatus},${o.date.toLocaleDateString()}`
+                    ).join('\n');
+                
+                const blob = new Blob([csv], { type: 'text/csv' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `orders-${new Date().toISOString().split('T')[0]}.csv`;
+                a.click();
+                URL.revokeObjectURL(url);
+                
+                this.notify('📥 Orders exported to CSV', 'success');
+            },
+
+            // ==================== CAMERA & VOICE ====================
+            simulateScan() {
+                const codes = this.orders.map(o => o.id);
+                const randomCode = codes.length > 0 ? codes[Math.floor(Math.random() * codes.length)] : 'ORD-2026-001';
+                
+                document.getElementById('scannedCode').textContent = randomCode;
+                document.getElementById('scanResult').classList.add('show');
+                this.notify(`📷 Scanned: ${randomCode}`, 'success');
+                
+                setTimeout(() => {
+                    this.closeModal('cameraModal');
+                    const order = this.orders.find(o => o.id === randomCode);
+                    if (order) {
+                        this.viewOrder(randomCode);
+                    }
+                }, 2000);
+            },
+
+            toggleVoice() {
+                const btn = document.getElementById('voiceBtn');
+                this.isVoiceListening = !this.isVoiceListening;
+                btn.classList.toggle('listening', this.isVoiceListening);
+                
+                if (this.isVoiceListening) {
+                    this.notify('🎤 Listening for commands...', 'info');
+                    setTimeout(() => {
+                        const commands = [
+                            'Show pending orders',
+                            'Create new order',
+                            'Show inventory',
+                            'Export data'
+                        ];
+                        const cmd = commands[Math.floor(Math.random() * commands.length)];
+                        this.notify(`🎤 "${cmd}"`, 'success');
+                        this.isVoiceListening = false;
+                        btn.classList.remove('listening');
+                    }, 2000);
+                }
+            },
+
+            // ==================== VIEW SWITCHING ====================
+            switchView(viewName) {
+                // Update navigation
+                document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+                event.currentTarget.classList.add('active');
+
+                // Update views
+                document.querySelectorAll('.view').forEach(view => view.classList.remove('active'));
+                document.getElementById(viewName + 'View').classList.add('active');
+
+                // Render data for view
+                if (viewName === 'shipping') this.renderShipping();
+                if (viewName === 'payments') this.renderPayments();
+            },
+
+            // ==================== MODAL ====================
+            openModal(modalId) {
+                document.getElementById(modalId).classList.add('active');
+            },
+
+            closeModal(modalId) {
+                document.getElementById(modalId).classList.remove('active');
+            },
+
+            // ==================== NOTIFICATION ====================
+            notify(message, type = 'success') {
+                const notification = document.getElementById('notification');
+                notification.textContent = message;
+                notification.className = `notification ${type} show`;
+                
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                }, 3000);
+            }
+        };
+
+        // Initialize app when DOM is ready
+        document.addEventListener('DOMContentLoaded', () => {
+            app.init();
+        });
+    </script>
+</body>
+</html>
